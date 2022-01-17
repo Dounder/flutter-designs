@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:design_app/widgets/widgets.dart';
+import 'package:design_app/src/widgets/headers.dart';
 
 class HeadersScreen extends StatelessWidget {
   const HeadersScreen({Key? key}) : super(key: key);
