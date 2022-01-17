@@ -19,6 +19,7 @@ class HeadersScreen extends StatelessWidget {
           HeaderCurved(),
           HeaderWaves(),
           HeaderWavesInverse(),
+          HeaderWavesGradient(),
         ],
       ),
     );
