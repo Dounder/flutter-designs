@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:design_app/src/widgets/radial_progress.dart';
+import 'package:design_app/widgets/radial_progress.dart';
 
 class CircularChartsScreen extends StatefulWidget {
   const CircularChartsScreen({Key? key}) : super(key: key);

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:design_app/src/widgets/widgets.dart';
+import 'package:design_app/widgets/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SlideShowScreen extends StatelessWidget {
