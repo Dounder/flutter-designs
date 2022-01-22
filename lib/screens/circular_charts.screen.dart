@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'package:design_app/widgets/radial_progress.dart';
+import 'package:design_app/theme/theme.dart';
 
 class CircularChartsScreen extends StatefulWidget {
   const CircularChartsScreen({Key? key}) : super(key: key);
@@ -13,6 +16,9 @@ class _CircularChartsScreenState extends State<CircularChartsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Provider.of<ThemeChanger>(context);
+    final color = Provider.of<ThemeChanger>(context).currentTheme.colorScheme;
+
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -25,7 +31,7 @@ class _CircularChartsScreenState extends State<CircularChartsScreen> {
                 color: Colors.red,
               ),
               CustomRadialProgress(
-                percentage: percentage,
+                percentage: percentage * 1.2,
                 color: Colors.blue,
               )
             ],
@@ -34,11 +40,11 @@ class _CircularChartsScreenState extends State<CircularChartsScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               CustomRadialProgress(
-                percentage: percentage,
+                percentage: percentage * 1.4,
                 color: Colors.indigo,
               ),
               CustomRadialProgress(
-                percentage: percentage,
+                percentage: percentage * 1.6,
                 color: Colors.green,
               )
             ],
@@ -47,7 +53,7 @@ class _CircularChartsScreenState extends State<CircularChartsScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.refresh),
-        backgroundColor: Colors.pink,
+        backgroundColor: theme.darkTheme ? color.secondary : Colors.pink,
         onPressed: () {
           percentage += 10;
 
@@ -74,6 +80,8 @@ class CustomRadialProgress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Provider.of<ThemeChanger>(context);
+
     return Container(
       padding: const EdgeInsets.all(10),
       height: 180,
@@ -81,6 +89,7 @@ class CustomRadialProgress extends StatelessWidget {
       child: RadialProgress(
         percentage: percentage,
         primaryColor: color,
+        secondaryColor: theme.darkTheme ? Colors.white : Colors.black12,
       ),
     );
   }

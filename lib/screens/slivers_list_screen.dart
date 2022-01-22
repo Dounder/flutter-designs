@@ -1,4 +1,6 @@
+import 'package:design_app/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SliversListScreen extends StatelessWidget {
   const SliversListScreen({Key? key}) : super(key: key);
@@ -28,22 +30,27 @@ class _NewListBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final theme = Provider.of<ThemeChanger>(context);
+    final color = Provider.of<ThemeChanger>(context).currentTheme;
 
     return ButtonTheme(
       minWidth: size.width * .9,
       height: 100,
       child: MaterialButton(
         onPressed: () {},
-        color: const Color(0xffed6762),
+        color: theme.darkTheme
+            ? color.colorScheme.secondary
+            : const Color(0xffed6762),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(50),
           ),
         ),
-        child: const Text(
+        child: Text(
           'CREATE NEW LIST',
           style: TextStyle(
-            color: Colors.white,
+            color:
+                theme.darkTheme ? color.scaffoldBackgroundColor : Colors.white,
             fontSize: 18,
             fontWeight: FontWeight.bold,
             letterSpacing: 3,
@@ -59,6 +66,8 @@ class _MainScroll extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Provider.of<ThemeChanger>(context).currentTheme;
+
     final items = [
       const _ListItem('Orange', Color(0xffF08F66)),
       const _ListItem('Family', Color(0xffF2A38A)),
@@ -80,7 +89,7 @@ class _MainScroll extends StatelessWidget {
             maxHeight: 200,
             child: Container(
               alignment: Alignment.centerLeft,
-              color: Colors.white,
+              color: theme.scaffoldBackgroundColor,
               child: const _ListTitle(),
             ),
           ),
@@ -131,13 +140,18 @@ class _ListTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Provider.of<ThemeChanger>(context);
+
     return Column(
       children: [
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-          child: const Text(
+          child: Text(
             'New',
-            style: TextStyle(color: Color(0xff532128), fontSize: 50),
+            style: TextStyle(
+              color: theme.darkTheme ? Colors.grey : const Color(0xff532128),
+              fontSize: 50,
+            ),
           ),
         ),
         Stack(
@@ -148,7 +162,7 @@ class _ListTitle extends StatelessWidget {
               child: Container(
                 width: 120,
                 height: 8,
-                color: const Color(0xfff7cdd5),
+                color: theme.darkTheme ? Colors.grey : const Color(0xfff7cdd5),
               ),
             ),
             const Text(
@@ -178,6 +192,8 @@ class _ListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Provider.of<ThemeChanger>(context);
+
     return Container(
       child: Text(
         title,
@@ -192,7 +208,7 @@ class _ListItem extends StatelessWidget {
       margin: const EdgeInsets.all(10),
       height: 130,
       decoration: BoxDecoration(
-        color: color,
+        color: theme.darkTheme ? Colors.black38 : color,
         borderRadius: BorderRadius.circular(30),
       ),
     );

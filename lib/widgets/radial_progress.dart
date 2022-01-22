@@ -113,8 +113,8 @@ class _MyRadialProgress extends CustomPainter {
     // Arc circle
     final paintArc = Paint()
       ..strokeWidth = frontStroke
-      // ..color = primaryColor
-      ..shader = gradient.createShader(rect)
+      ..color = primaryColor
+      // ..shader = gradient.createShader(rect)
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke;
 
